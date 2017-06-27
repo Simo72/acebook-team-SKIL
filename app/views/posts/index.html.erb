@@ -1,8 +1,17 @@
 <% @posts.each do |post| %>
   <p><%= post.message %></p>
-  <form action="/:1" method="GET">
-    <input type="submit" value="See Post" name="See Post">
-  </form>
+  <%if post.comments.any? %>
+    Comments:
+    <br>
+    <ul>
+    <% post.comments.each do |comment| %>
+        <li>
+        <%= comment.text %>
+        </li>
+    <%end%>
+    </ul>
+  <%end%>
+  <%= link_to 'Show', post_path(post)%>
 <% end %>
 
 <%= link_to new_post_path do %>

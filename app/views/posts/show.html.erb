@@ -1,0 +1,5 @@
+SHOW POSTS
+<p>
+  <%= @post.message %>
+  </p>
+  <%= link_to 'Add Comment', new_comment_path(post_id: @post.id)  %>
