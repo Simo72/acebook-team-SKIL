@@ -1,5 +1,6 @@
 <% @posts.each do |post| %>
   <p><%= post.message %></p>
+  <%= post.created_at.strftime("%d/%m/%Y %H:%M") %>
   <%if post.comments.any? %>
     Comments:
     <br>
