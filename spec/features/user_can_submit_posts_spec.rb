@@ -22,4 +22,11 @@ RSpec.feature "Timeline", type: :feature do
     make_new_post("2")
     expect('2').to appear_before('1')
   end
+
+  scenario "Can't make post without signing in" do
+    sign_out
+    visit "/posts"
+    click_link "New post"
+    expect(current_path).to eq "/sign_in"
+  end
 end
