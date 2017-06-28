@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'database_cleaner'
   gem 'dm-transactions'
+  gem 'orderly'
 end
 
 group :development do
