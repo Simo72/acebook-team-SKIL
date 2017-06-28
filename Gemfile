@@ -41,6 +41,8 @@ group :development, :test do
   gem 'clearance'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.5'
+  gem 'database_cleaner'
+  gem 'dm-transactions'
 end
 
 group :development do
