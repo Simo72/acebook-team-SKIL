@@ -9,13 +9,35 @@
   </head>
 
   <body>
-    
-      <% if signed_in? %>
+
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">AceBook</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Newsfeed</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if signed_in? %>
+          <span style="color:white" class="glyphicon glyphicon-user"><%= current_user.email %></span>
+          <%= button_to 'Sign out', sign_out_path, method: :delete %>
+          <!-- <li><a href="/sign_out"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li> -->
+        <% else %>
+        <li><a href="/sign_up"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/sign_in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+      <!-- <% if signed_in? %>
       Signed in as: <%= current_user.email %>
       <%= button_to 'Sign out', sign_out_path, method: :delete %>
     <% else %>
       <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
+    <% end %> -->
 
     <div id="flash">
       <% flash.each do |key, value| %>
