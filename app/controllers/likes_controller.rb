@@ -11,6 +11,12 @@ class LikesController < ApplicationController
     redirect_to posts_url
   end
 
+  def destroy
+    @like = Like.find(params[:id])
+    @like.destroy
+    redirect_to posts_url
+  end
+
   private
 
   def like_params

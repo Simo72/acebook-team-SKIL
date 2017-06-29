@@ -5,12 +5,13 @@
   </li>
 
   <%= link_to 'Show', post_path(post)%>
-  <% liked = post.likes.select { |like| like.user_id == current_user.id}.empty? %>
-  <%= liked %>
-  <% if liked %>
+  <% current_user_like = post.likes.select { |like| like.user_id == current_user.id}[0] %>
+  <% if current_user_like.nil? %>
     <%= button_to 'Like', post_likes_path(user_id:current_user.id, post_id: post.id) %>
   <% else %>
-    <%= button_to 'Unlike' %>
+    <%= button_to 'Unlike',
+        post_like_path(current_user_like.id, current_user_like),
+        method: :delete %>
   <% end %>
     <% if post.likes.count > 0 %>
       <%= " #{post.likes.count} Liked this" %>
