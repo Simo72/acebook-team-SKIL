@@ -6,6 +6,9 @@
 
   <%= link_to 'Show', post_path(post)%>
   <%= button_to 'Like', post_likes_path(user_id:current_user.id, post_id: post.id) %>
+    <% if post.likes %>
+      <%= " #{post.likes.count} Liked this" %>
+    <% end %>
 <% end %>
 <br>
 <%= link_to new_post_path do %>
