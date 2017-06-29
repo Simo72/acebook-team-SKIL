@@ -3,21 +3,34 @@
   <p><%= post.message %></p>
   <%= post.created_at.strftime("%d/%m/%Y %H:%M") %>
   </li>
+  <%if post.comments.any? %>
+    Comments:
+    <br>
+    <ul>
+      <% post.comments.each do |comment| %>
+        <li>
+          <%= comment.text %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <%= link_to 'Show', post_path(post)%>
-  <% current_user_like = post.likes.select { |like| like.user_id == current_user.id}[0] %>
-  <% if current_user_like.nil? %>
-    <%= button_to 'Like', post_likes_path(user_id:current_user.id, post_id: post.id) %>
-  <% else %>
-    <%= button_to 'Unlike',
-        post_like_path(current_user_like.id, current_user_like),
-        method: :delete %>
-  <% end %>
+  <% if current_user %>
+    <% current_user_like = post.likes.select { |like| like.user_id == current_user.id}[0] %>
+    <% if current_user_like.nil? %>
+      <%= button_to 'Like', post_likes_path(user_id:current_user.id, post_id: post.id) %>
+    <% else %>
+      <%= button_to 'Unlike',
+          post_like_path(current_user_like.id, current_user_like),
+          method: :delete %>
+    <% end %>
     <% if post.likes.count > 0 %>
       <%= " #{post.likes.count} Liked this" %>
     <% end %>
+  <% end %>
 <% end %>
-<br>
+  <br>
 <%= link_to new_post_path do %>
   New post
 <% end %>
