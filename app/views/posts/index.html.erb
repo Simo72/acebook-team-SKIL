@@ -1,20 +1,29 @@
 <% @posts.reverse_each do |post| %>
-  <li>
-  <p><%= post.message %> by <%= post.user.email %> </p>
-  <%= post.created_at.strftime("%d/%m/%Y %H:%M") %>
-  </li>
-  <%if post.comments.any? %>
-    Comments:
-    <br>
-    <ul>
-    <% post.comments.each do |comment| %>
-        <li>
-        <%= comment.text %>
-        </li>
-    <%end%>
-    </ul>
-  <%end%>
-  <%= link_to 'Show', post_path(post)%>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= post.user.email %></div>
+    <div class="panel-body">
+      <%= post.message %><br><br>
+      <%if post.comments.any? %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            Comments:
+            <br>
+            <ul>
+            <% post.comments.each do |comment| %>
+                <li>
+                <%= comment.text %>
+                </li>
+            <%end%>
+            </ul>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  <div class="panel-footer">
+    <%= post.created_at.strftime("%d/%m/%Y %H:%M") %>
+    <%= link_to 'Show', post_path(post)%>
+  </div>
+  </div>
 <% end %>
 
 <%= link_to new_post_path do %>
