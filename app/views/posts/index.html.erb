@@ -1,6 +1,6 @@
 <% @posts.reverse_each do |post| %>
   <li>
-  <p><%= post.message %></p>
+  <p><%= post.message %> by <%= post.user.email %> </p>
   <%= post.created_at.strftime("%d/%m/%Y %H:%M") %>
   </li>
   <%if post.comments.any? %>
