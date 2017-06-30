@@ -1,39 +1,44 @@
+<%= button_to 'New Post', new_post_path, method: :get %><br>
+
 <% @posts.reverse_each do |post| %>
-  <li>
-  <p><%= simple_format(post.message) %></p>
-  <p>Post by <%=  post.user.name %>
-
-  <%= post.created_at.strftime("%d/%m/%Y %H:%M") %>
-  </li>
-  <%if post.comments.any? %>
-    Comments:
-    <br>
-    <ul>
-      <% post.comments.each do |comment| %>
-        <li>
-          <%= comment.text %><br>
-           by <%= comment.user.name %>
-        </li>
+  <div class="panel panel-default">
+    <div class="panel-heading">By <%=post.user.name %></div>
+    <div class="panel-body">
+      <%= simple_format(post.message) %><br><br>
+      <%if post.comments.any? %>
+        <div class="panel panel-default">
+            <div class="panel-body">
+              <b>Comments:</b>
+            <br>
+            <ul>
+            <% post.comments.each do |comment| %>
+                <li>
+                <%= comment.text %><br>
+                  by <%= comment.user.name %>
+                </li>
+            <%end%>
+            </ul>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  <div class="panel-footer clearfix">
+    <%= post.created_at.strftime("%d/%m/%Y %H:%M") %>
+    <%= link_to 'Show', post_path(post)%>
+    <%= link_to 'Add Comment', new_comment_path(post_id: post.id)  %>
+    <% if current_user %>
+      <% current_user_like = post.likes.select { |like| like.user_id == current_user.id}[0] %>
+      <% if current_user_like.nil? %>
+        <%= button_to post_likes_path(user_id:current_user.id, post_id: post.id), class: "glyphicon glyphicon-heart-empty pull-right" do %>
+        <% end %>
+      <% else %>
+      <%= button_to post_like_path(current_user_like.id, current_user_like), class: "glyphicon glyphicon-heart pull-right", method: :delete do %>
       <% end %>
-    </ul>
-  <% end %>
-
-  <%= link_to 'Show', post_path(post)%>
-  <% if current_user %>
-    <% current_user_like = post.likes.select { |like| like.user_id == current_user.id}[0] %>
-    <% if current_user_like.nil? %>
-      <%= button_to 'Like', post_likes_path(user_id:current_user.id, post_id: post.id) %>
-    <% else %>
-      <%= button_to 'Unlike',
-          post_like_path(current_user_like.id, current_user_like),
-          method: :delete %>
+      <% end %>
+      <% if post.likes.count > 0 %>
+        <%= " #{post.likes.count} Liked this" %>
+      <% end %>
     <% end %>
-    <% if post.likes.count > 0 %>
-      <%= " #{post.likes.count} Liked this" %>
-    <% end %>
-  <% end %>
-<% end %>
-  <br>
-<%= link_to new_post_path do %>
-  New post
+  </div>
+  </div>
 <% end %>

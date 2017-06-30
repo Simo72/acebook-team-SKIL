@@ -26,7 +26,7 @@ RSpec.feature "Timeline", type: :feature do
   scenario "Can't make post without signing in" do
     sign_out
     visit "/posts"
-    click_link "New post"
+    click_button "New Post"
     expect(current_path).to eq "/sign_in"
   end
 
@@ -37,6 +37,6 @@ RSpec.feature "Timeline", type: :feature do
     fill_in "user_password", with: "password"
     click_button "Sign up"
     make_new_post
-    expect(page).to have_content "Post by Test"
+    expect(page).to have_content "By Test"
   end
 end
