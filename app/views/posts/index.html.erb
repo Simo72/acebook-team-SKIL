@@ -11,7 +11,8 @@
     <ul>
       <% post.comments.each do |comment| %>
         <li>
-          <%= comment.text %>
+          <%= comment.text %><br>
+           by <%= comment.user.name %>
         </li>
       <% end %>
     </ul>

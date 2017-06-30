@@ -15,6 +15,7 @@ FactoryGirl.define do
 
   factory :comment do
     post
+    user
     text "Lorem Ipsum"
   end
 
