@@ -4,7 +4,7 @@
   <div class="panel panel-default">
     <div class="panel-heading"><%= post.user.email %></div>
     <div class="panel-body">
-      <%= post.message %><br><br>
+      <%= simple_format(post.message) %><br><br>
       <%if post.comments.any? %>
         <div class="panel panel-default">
             <div class="panel-body">
