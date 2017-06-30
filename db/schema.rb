@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20170628142252) do
+ActiveRecord::Schema.define(version: 20170628144734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,10 +51,5 @@ ActiveRecord::Schema.define(version: 20170628142252) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
-<<<<<<< HEAD
   add_foreign_key "posts", "users"
-=======
-  add_foreign_key "likes", "posts"
-  add_foreign_key "likes", "users"
->>>>>>> 10dace1691f85e82b5d91a92f59b4d9184de8f3a
 end
