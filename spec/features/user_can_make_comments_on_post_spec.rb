@@ -33,6 +33,7 @@ RSpec.feature "Make a Comment", type: :feature do
 
   scenario "Comments show user name" do
     visit "/sign_up"
+    fill_in "user_name", with: "Test"
     fill_in "user_email", with: "test@email.com"
     fill_in "user_password", with: "password"
     click_button "Sign up"

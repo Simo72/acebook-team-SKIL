@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :posts
 
-  def name
-    self.email.split("@").first.capitalize
-  end
+  # def name
+  #   self.email.split("@").first.capitalize
+  # end
 end
