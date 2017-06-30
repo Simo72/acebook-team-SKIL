@@ -1,0 +1,30 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#comment-panel {
+    background-image: none;
+    background-color: #999999;
+    color: black;
+}
+
+#header {
+  font-family: 'Pacifico', cursive;
+  font-size: 30px;
+  color: white;
+}
+
+.glyphicon.glyphicon-heart {
+    font-size: 20px;
+    color: #8B0000;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.glyphicon.glyphicon-heart-empty {
+    font-size: 20px;
+    color: #8B0000;
+    padding: 0;
+    background: none;
+    border: none;
+}

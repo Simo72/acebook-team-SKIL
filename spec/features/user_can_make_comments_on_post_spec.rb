@@ -5,7 +5,7 @@ RSpec.feature "Make a Comment", type: :feature do
   scenario "Can submit posts and view them" do
     sign_in
     visit "/posts"
-    click_link "New post"
+    click_button "New Post"
     fill_in "Message", with: "Hello, world!"
     click_button "Submit"
     expect(page).to have_content("Hello, world!")
@@ -22,7 +22,7 @@ RSpec.feature "Make a Comment", type: :feature do
   scenario "Can't create comment when signed out" do
     sign_in
     visit "/posts"
-    click_link "New post"
+    click_button "New Post"
     fill_in "Message", with: "Hello, world!"
     click_button "Submit"
     sign_out
