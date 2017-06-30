@@ -33,6 +33,7 @@ RSpec.feature "Timeline", type: :feature do
   scenario "Posts show user name" do
     sign_out
     visit "/sign_up"
+    fill_in "user_name", with: "Test"
     fill_in "user_email", with: "test@email.com"
     fill_in "user_password", with: "password"
     click_button "Sign up"
