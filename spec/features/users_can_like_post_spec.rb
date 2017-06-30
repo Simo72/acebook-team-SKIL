@@ -4,7 +4,7 @@ RSpec.feature "Like a Post", type: :feature do
   scenario "User can like a post" do
     sign_in
     make_new_post
-    click_button "Like"
+    find(:css, '.glyphicon.glyphicon-heart-empty').click
     expect(page).to have_content('Liked')
   end
 end

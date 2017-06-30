@@ -1,7 +1,7 @@
 
 def make_new_post(message = "Hello, world!")
 visit "/posts"
-click_link "New post"
+click_button "New Post"
 fill_in "post_message", with: message
 click_button "Submit"
 end
