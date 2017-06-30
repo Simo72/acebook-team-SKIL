@@ -14,6 +14,11 @@ class Clearance::UsersController < ApplicationController
     render template: "users/new"
   end
 
+  def show
+    @user = User.find(params[:id])
+    render template: "users/show"
+  end
+
   def create
     @user = user_from_params
 
