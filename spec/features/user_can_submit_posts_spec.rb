@@ -29,4 +29,14 @@ RSpec.feature "Timeline", type: :feature do
     click_link "New post"
     expect(current_path).to eq "/sign_in"
   end
+
+  scenario "Posts show user name" do
+    sign_out
+    visit "/sign_up"
+    fill_in "user_email", with: "test@email.com"
+    fill_in "user_password", with: "password"
+    click_button "Sign up"
+    make_new_post
+    expect(page).to have_content "Post by Test"
+  end
 end

@@ -7,4 +7,15 @@ FactoryGirl.define do
     email
     password "password"
   end
+
+  factory :post do
+    user
+    message "Lorem Ipsum"
+  end
+
+  factory :comment do
+    post
+    text "Lorem Ipsum"
+  end
+
 end
