@@ -18,9 +18,9 @@ RSpec.feature "Timeline", type: :feature do
   end
 
   scenario "Posts appear in reverse chronological order" do
-    make_new_post("1")
-    make_new_post("2")
-    expect('2').to appear_before('1')
+    make_new_post('First Post')
+    make_new_post('Second Post')
+    expect('Second Post').to appear_before('First Post')
   end
 
   scenario "Can't make post without signing in" do
